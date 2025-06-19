@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# Générateur de Facture PDF - Application React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-18.2.0-blue)
+![jsPDF](https://img.shields.io/badge/jsPDF-2.5.1-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## Available Scripts
+Cette application React permet de créer et générer des factures professionnelles au format PDF avec une mise en page soignée. Elle offre une interface intuitive pour saisir les informations de facturation et prévisualiser le résultat avant impression.
 
-In the project directory, you can run:
+## Fonctionnalités principales
 
-### `npm start`
+-  Création de factures avec tous les éléments nécessaires
+-  Gestion de plusieurs lignes de services
+-  Calcul automatique des totaux (HT, TVA, TTC)
+-  Aperçu en temps réel de la facture
+-  Génération de PDF prêt à imprimer
+-  Sauvegarde des informations de la société pour réutilisation
+-  Interface responsive et conviviale
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies utilisées
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React** (v18.2.0) - Bibliothèque JavaScript pour les interfaces utilisateur
+- **jsPDF** (v2.5.1) - Génération de documents PDF côté client
+- **HTML5 & CSS3** - Structure et mise en page
+- **JavaScript (ES6+)** - Logique de l'application
+- **Date API** - Gestion des dates
 
-### `npm test`
+## Installation et utilisation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prérequis
 
-### `npm run build`
+- Node.js (v14 ou supérieur)
+- npm (v6 ou supérieur)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Étapes d'installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clonez le dépôt :
+```bash
+git clone https://github.com/AZIZABADA10/Facture.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Accédez au répertoire du projet :
+```bash
+cd Facture
+```
 
-### `npm run eject`
+3. Installez les dépendances :
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Lancez l'application :
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Ouvrez votre navigateur à l'adresse :
+```
+http://localhost:3000
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Guide d'utilisation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Création d'une facture
 
-## Learn More
+1. Remplissez les **Informations générales** :
+   - Nom de la société
+   - Date de facturation
+   - Numéro de facture
+   - Client et ICE
+   - Taux de TVA
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Ajoutez les **Services** :
+   - Description du service
+   - Montant (en DH)
+   - Ajoutez ou supprimez des lignes selon vos besoins
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Consultez les **Totaux** automatiquement calculés :
+   - Total HT
+   - Montant TVA
+   - Total TTC
 
-### Code Splitting
+4. Complétez les **Informations complémentaires** :
+   - Texte d'arrêté
+   - Informations de votre société (capital, adresse, etc.)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. Utilisez les boutons :
+   - **Aperçu de la facture** pour visualiser le résultat
+   - **Générer PDF directement** pour créer et imprimer immédiatement
 
-### Analyzing the Bundle Size
+### Prévisualisation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Dans la vue d'aperçu :
+- Vérifiez tous les détails de votre facture
+- Utilisez le bouton **Imprimer PDF** pour générer et imprimer le document final
+- Cliquez sur **← Retour** pour modifier la facture
 
-### Making a Progressive Web App
+## Structure des fichiers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+generateur-facture-pdf/
+├── src/
+│   ├── App.js             # Composant principal
+│   ├── index.js           # Point d'entrée de l'application
+│   ├── index.css          # Styles globaux
+│   └── ...                # Autres fichiers React
+├── public/
+│   ├── index.html         # Template HTML principal
+│   └── ...                # Autres ressources statiques
+├── package.json           # Dépendances et scripts
+└── README.md              # Ce fichier
+```
 
-### Advanced Configuration
+## Personnalisation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Pour adapter l'application à vos besoins :
 
-### Deployment
+1. Modifiez les valeurs par défaut dans `App.js` :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+2. Personnalisez le style dans `index.css` ou dans les styles en ligne dans `App.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Pour modifier le modèle de facture, éditez la fonction `generatePDF` dans `App.js`
+
+## Développer par Abada Aziz 
