@@ -62,21 +62,28 @@ function App() {
   const montantTVA = (totalHT * parseFloat(formData.tva || 0)) / 100;
   const totalTTC = totalHT + montantTVA;
 
-  const downloadPDF = () => {
-    const input = invoiceRef.current;
-    html2canvas(input, {
-      scale: 2,
-      useCORS: true,
-    }).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = pdf.internal.pageSize.getWidth();
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save(`facture-${formData.numeroFacture || 'sans-numero'}.pdf`);
-    });
-  };
+ const downloadPDF = () => {
+  const input = invoiceRef.current;
+  if (!input) {
+    alert("Erreur : le contenu de la facture n'est pas prêt !");
+    return;
+  }
+
+  html2canvas(input, {
+    scale: 2,
+    useCORS: true,
+    scrollY: -window.scrollY  // évite le décalage sur mobile
+  }).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const imgWidth = pdf.internal.pageSize.getWidth();
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    
+    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+    pdf.save(`facture-${formData.numeroFacture || 'sans-numero'}.pdf`);
+  });
+};
+
 
   return (
     <div className="app-container">
@@ -321,8 +328,9 @@ function App() {
               onClick={() => setShowPreview(true)}
               className="btn btn-preview"
             >
-              Aperçu de la facture
+              Aperçu de la facture 
             </button>
+          
           </div>
         </div>
       )}
